@@ -6,24 +6,30 @@ const celebration = document.querySelector('#celebration');
 const question = document.querySelector('#sure-question');
 const confirmYes = document.querySelector('#confirm-yes');
 const confirmNo = document.querySelector('#confirm-no');
-const noZone = document.querySelector('.no-zone');
 
 let noCount = 0;
 let dodgeCount = 0;
+let buttonX = 0;
+let buttonY = 0;
 const maxDodges = 3;
 
 function moveNoButton() {
   // Dopo tre fughe, il pulsante si lascia finalmente cliccare.
   if (dodgeCount >= maxDodges) return;
 
-  const padding = 7;
-  const maxX = Math.max(padding, noZone.clientWidth - noButton.offsetWidth - padding);
-  const maxY = Math.max(padding, noZone.clientHeight - noButton.offsetHeight - padding);
-  const x = padding + Math.random() * (maxX - padding);
-  const y = padding + Math.random() * (maxY - padding);
+  const padding = 8;
+  const area = firstActions.getBoundingClientRect();
+  const button = noButton.getBoundingClientRect();
+  const baseLeft = button.left - buttonX;
+  const baseTop = button.top - buttonY;
+  const minX = area.left + padding - baseLeft;
+  const maxX = area.right - padding - noButton.offsetWidth - baseLeft;
+  const minY = area.top + padding - baseTop;
+  const maxY = area.bottom - padding - noButton.offsetHeight - baseTop;
 
-  noButton.style.left = `${x}px`;
-  noButton.style.top = `${y}px`;
+  buttonX = minX + Math.random() * Math.max(0, maxX - minX);
+  buttonY = minY + Math.random() * Math.max(0, maxY - minY);
+  noButton.style.transform = `translate(${buttonX}px, ${buttonY}px)`;
   dodgeCount += 1;
 }
 
