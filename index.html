@@ -22,16 +22,19 @@
 
         <div class="actions" id="first-actions">
           <button class="button button-yes" id="yes-button" type="button">Sì, ci sono! <span aria-hidden="true">🥳</span></button>
-          <button class="button button-no" id="no-button" type="button">No, grazie</button>
+          <div class="no-zone" aria-label="Area del pulsante No">
+            <button class="button button-no" id="no-button" type="button">No, grazie</button>
+          </div>
         </div>
 
         <div class="confirmation hidden" id="confirmation">
           <div class="tiny-emoji" aria-hidden="true">🤨</div>
           <p class="eyebrow">UN'ULTIMA COSA...</p>
-          <h2 id="sure-question">Sei sicuro?</h2>
+          <h2>Vuoi unirti a noi?</h2>
+          <p class="sure-question" id="sure-question">No? Sei sicuro?</p>
           <div class="actions confirmation-actions">
-            <button class="button button-yes" id="confirm-yes" type="button">Sì, sicurissimo</button>
-            <button class="text-button" id="confirm-no" type="button">No</button>
+            <button class="button button-yes" id="confirm-yes" type="button">Sì, vengo! <span aria-hidden="true">🥳</span></button>
+            <button class="text-button" id="confirm-no" type="button">No, grazie</button>
           </div>
         </div>
 
