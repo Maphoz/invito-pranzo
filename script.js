@@ -6,15 +6,31 @@ const celebration = document.querySelector('#celebration');
 const question = document.querySelector('#sure-question');
 const confirmYes = document.querySelector('#confirm-yes');
 const confirmNo = document.querySelector('#confirm-no');
+const inviteCard = document.querySelector('.invite-card');
 
 let noCount = 0;
+let dodgeCount = 0;
+let buttonX = 0;
+let buttonY = 0;
 
 function moveNoButton() {
-  const maxX = Math.max(70, window.innerWidth * 0.22);
-  const maxY = Math.max(45, window.innerHeight * 0.12);
-  const x = (Math.random() * 2 - 1) * maxX;
-  const y = (Math.random() * 2 - 1) * maxY;
-  noButton.style.transform = `translate(${x}px, ${y}px) rotate(${x / 12}deg)`;
+  // Dopo due fughe, il pulsante si lascia finalmente cliccare.
+  if (dodgeCount >= 2) return;
+
+  const safeMargin = 18;
+  const cardRect = inviteCard.getBoundingClientRect();
+  const buttonRect = noButton.getBoundingClientRect();
+  const baseLeft = buttonRect.left - buttonX;
+  const baseTop = buttonRect.top - buttonY;
+  const minX = cardRect.left + safeMargin - baseLeft;
+  const maxX = cardRect.right - safeMargin - noButton.offsetWidth - baseLeft;
+  const minY = cardRect.top + safeMargin - baseTop;
+  const maxY = cardRect.bottom - safeMargin - noButton.offsetHeight - baseTop;
+
+  buttonX = minX + Math.random() * Math.max(0, maxX - minX);
+  buttonY = minY + Math.random() * Math.max(0, maxY - minY);
+  noButton.style.transform = `translate(${buttonX}px, ${buttonY}px) rotate(${buttonX / 12}deg)`;
+  dodgeCount += 1;
 }
 
 function showConfirmation() {
