@@ -43,17 +43,16 @@ function showCelebration() {
 }
 
 function makeQuestion() {
-  question.textContent = `No? Sei ${'sicuro '.repeat(noCount + 1).trim()}?`;
-  confirmNo.textContent = noCount > 2 ? 'Ancora no, grazie' : 'No, grazie';
+  question.textContent = `Sei ${'sicuro '.repeat(noCount + 1).trim()}?`;
 }
 
 noButton.addEventListener('pointerenter', moveNoButton);
 noButton.addEventListener('focus', moveNoButton);
 noButton.addEventListener('click', showConfirmation);
 yesButton.addEventListener('click', showCelebration);
-confirmYes.addEventListener('click', showCelebration);
-confirmNo.addEventListener('click', () => {
+confirmYes.addEventListener('click', () => {
   noCount += 1;
   makeQuestion();
-  confirmNo.animate([{ transform: 'translateX(0)' }, { transform: 'translateX(-5px)' }, { transform: 'translateX(5px)' }, { transform: 'translateX(0)' }], { duration: 240 });
+  confirmYes.animate([{ transform: 'translateX(0)' }, { transform: 'translateX(-5px)' }, { transform: 'translateX(5px)' }, { transform: 'translateX(0)' }], { duration: 240 });
 });
+confirmNo.addEventListener('click', showCelebration);
