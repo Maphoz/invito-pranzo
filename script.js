@@ -53,6 +53,9 @@ yesButton.addEventListener('click', showCelebration);
 confirmYes.addEventListener('click', () => {
   noCount += 1;
   makeQuestion();
-  confirmYes.animate([{ transform: 'translateX(0)' }, { transform: 'translateX(-5px)' }, { transform: 'translateX(5px)' }, { transform: 'translateX(0)' }], { duration: 240 });
+  confirmYes.animate(
+    [{ transform: 'translateX(0)' }, { transform: 'translateX(-5px)' }, { transform: 'translateX(5px)' }, { transform: 'translateX(0)' }],
+    { duration: 240 },
+  );
 });
 confirmNo.addEventListener('click', showCelebration);
