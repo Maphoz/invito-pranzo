@@ -82,11 +82,13 @@ h2 { margin: 0; font-size: clamp(2.35rem, 6vw, 3.75rem); line-height: 1.03; lett
 .button:hover { transform: translateY(-3px); }
 .button-yes { color: white; background: var(--orange); box-shadow: 0 5px 0 var(--orange-dark); }
 .button-yes:hover { background: #ef6f3c; box-shadow: 0 8px 0 var(--orange-dark); }
-.button-no { color: var(--ink); background: #f2eadb; }
+.no-zone { position: relative; width: 196px; height: 62px; overflow: hidden; border: 1px solid rgba(58, 48, 41, .13); border-radius: 16px; background: #e9e3db; }
+.button-no { position: absolute; top: 10px; left: 13px; color: var(--ink); background: #f7f2e9; box-shadow: 0 2px 0 rgba(58, 48, 41, .12); }
 
 .hidden { display: none; }
 .tiny-emoji { margin-bottom: 8px; font-size: 56px; }
 .confirmation .eyebrow { margin-top: 0; }
+.sure-question { margin: 12px 0 0; color: var(--orange); font-size: 1.1rem; font-weight: 700; }
 .confirmation-actions { margin-top: 26px; }
 .text-button { padding: 10px 15px; color: #806e60; background: none; border: 0; text-decoration: underline; text-underline-offset: 4px; }
 .text-button:hover { color: var(--ink); }
@@ -112,4 +114,5 @@ h2 { margin: 0; font-size: clamp(2.35rem, 6vw, 3.75rem); line-height: 1.03; lett
   .restaurant-card img { height: 175px; min-height: 0; }
   .actions { gap: 8px; }
   .button { padding-inline: 17px; }
+  #first-actions { flex-direction: column; }
 }
