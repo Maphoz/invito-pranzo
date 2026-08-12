@@ -6,31 +6,29 @@ const celebration = document.querySelector('#celebration');
 const question = document.querySelector('#sure-question');
 const confirmYes = document.querySelector('#confirm-yes');
 const confirmNo = document.querySelector('#confirm-no');
-const inviteCard = document.querySelector('.invite-card');
+const noZone = document.querySelector('.no-zone');
 
 let noCount = 0;
 let dodgeCount = 0;
-let buttonX = 0;
-let buttonY = 0;
+const maxDodges = 3;
 
 function moveNoButton() {
-  // Dopo due fughe, il pulsante si lascia finalmente cliccare.
-  if (dodgeCount >= 2) return;
+  // Dopo tre fughe, il pulsante si lascia finalmente cliccare.
+  if (dodgeCount >= maxDodges) return;
 
-  const safeMargin = 18;
-  const cardRect = inviteCard.getBoundingClientRect();
-  const buttonRect = noButton.getBoundingClientRect();
-  const baseLeft = buttonRect.left - buttonX;
-  const baseTop = buttonRect.top - buttonY;
-  const minX = cardRect.left + safeMargin - baseLeft;
-  const maxX = cardRect.right - safeMargin - noButton.offsetWidth - baseLeft;
-  const minY = cardRect.top + safeMargin - baseTop;
-  const maxY = cardRect.bottom - safeMargin - noButton.offsetHeight - baseTop;
+  const padding = 7;
+  const maxX = Math.max(padding, noZone.clientWidth - noButton.offsetWidth - padding);
+  const maxY = Math.max(padding, noZone.clientHeight - noButton.offsetHeight - padding);
+  const x = padding + Math.random() * (maxX - padding);
+  const y = padding + Math.random() * (maxY - padding);
 
-  buttonX = minX + Math.random() * Math.max(0, maxX - minX);
-  buttonY = minY + Math.random() * Math.max(0, maxY - minY);
-  noButton.style.transform = `translate(${buttonX}px, ${buttonY}px) rotate(${buttonX / 12}deg)`;
+  noButton.style.left = `${x}px`;
+  noButton.style.top = `${y}px`;
   dodgeCount += 1;
+
+  if (dodgeCount === maxDodges) {
+    noButton.textContent = 'Ora cliccami';
+  }
 }
 
 function showConfirmation() {
@@ -45,8 +43,8 @@ function showCelebration() {
 }
 
 function makeQuestion() {
-  question.textContent = `Sei ${'sicuro '.repeat(noCount + 1).trim()}?`;
-  confirmNo.textContent = noCount > 2 ? 'Ancora no...' : 'No';
+  question.textContent = `No? Sei ${'sicuro '.repeat(noCount + 1).trim()}?`;
+  confirmNo.textContent = noCount > 2 ? 'Ancora no, grazie' : 'No, grazie';
 }
 
 noButton.addEventListener('pointerenter', moveNoButton);
