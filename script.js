@@ -31,6 +31,13 @@ function moveNoButton() {
   buttonY = minY + Math.random() * Math.max(0, maxY - minY);
   noButton.style.transform = `translate(${buttonX}px, ${buttonY}px)`;
   dodgeCount += 1;
+
+  // Dopo la terza fuga torna accanto al pulsante Sì e resta cliccabile.
+  if (dodgeCount === maxDodges) {
+    buttonX = 0;
+    buttonY = 0;
+    noButton.style.transform = '';
+  }
 }
 
 function showConfirmation() {
