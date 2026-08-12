@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Un invito a pranzo alla Locanda al Greto." />
+    <title>Pranzo con noi? 🍝</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <div class="floating-shape shape-one"></div>
+      <div class="floating-shape shape-two"></div>
+      <section class="invite-card" id="app" aria-live="polite">
+        <p class="eyebrow">UNA PAUSA MERITATA</p>
+        <div class="food-emoji" aria-hidden="true">🍝</div>
+        <h1 id="title">Venite a pranzo<br /><em>con noi?</em></h1>
+        <p class="subtitle" id="subtitle">Promettiamo chiacchiere, risate e qualcosa di molto buono nel piatto.</p>
+
+        <div class="actions" id="first-actions">
+          <button class="button button-yes" id="yes-button" type="button">Sì, ci sono! <span aria-hidden="true">🥳</span></button>
+          <button class="button button-no" id="no-button" type="button">No, grazie</button>
+        </div>
+
+        <div class="confirmation hidden" id="confirmation">
+          <div class="tiny-emoji" aria-hidden="true">🤨</div>
+          <p class="eyebrow">UN'ULTIMA COSA...</p>
+          <h2 id="sure-question">Sei sicuro?</h2>
+          <div class="actions confirmation-actions">
+            <button class="button button-yes" id="confirm-yes" type="button">Sì, sicurissimo</button>
+            <button class="text-button" id="confirm-no" type="button">No</button>
+          </div>
+        </div>
+
+        <div class="celebration hidden" id="celebration">
+          <div class="happy-emoji" aria-hidden="true">🤩</div>
+          <p class="eyebrow">EVVIVA!</p>
+          <h2>Sono contentissimo<br />che tu ci sia!</h2>
+          <p class="subtitle">Ci vediamo alla <strong>Locanda al Greto</strong>.</p>
+          <article class="restaurant-card">
+            <img src="https://www.locandaalgreto.it/wp-content/uploads/2026/05/Foto-Locanda-Al-Greto-1024x790.jpeg" alt="Esterno della Locanda al Greto" onerror="this.src='https://www.locandaalgreto.it/wp-content/uploads/2026/05/DSC08071625264370728-1024x684.jpg'" />
+            <div class="restaurant-copy">
+              <p class="restaurant-label">DOVE CI TROVIAMO</p>
+              <h3>Locanda al Greto</h3>
+              <p>Via del Greto 35<br />40132 Bologna</p>
+              <div class="restaurant-links">
+                <a href="https://www.google.com/maps/search/?api=1&query=Locanda+al+Greto%2C+Via+del+Greto+35%2C+Bologna" target="_blank" rel="noreferrer">Apri su Maps <span aria-hidden="true">↗</span></a>
+                <a href="https://www.locandaalgreto.it/" target="_blank" rel="noreferrer">Sito del ristorante <span aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>

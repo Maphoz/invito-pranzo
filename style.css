@@ -1,0 +1,115 @@
+:root {
+  --ink: #3a3029;
+  --cream: #fff9ef;
+  --orange: #e8602f;
+  --orange-dark: #bf4621;
+  --yellow: #ffd966;
+  --green: #27705e;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  color: var(--ink);
+  background: #f7d49d;
+  font-family: "DM Sans", sans-serif;
+}
+
+button, a { font: inherit; }
+button { cursor: pointer; }
+
+.page-shell {
+  position: relative;
+  display: grid;
+  min-height: 100vh;
+  padding: 32px 20px;
+  place-items: center;
+  overflow: hidden;
+  background: radial-gradient(circle at 16% 15%, #fff5cf 0 6%, transparent 6.2%), radial-gradient(circle at 88% 80%, #e99b4c 0 11%, transparent 11.2%), #f6d39d;
+}
+
+.floating-shape {
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border: 2px solid rgba(58, 48, 41, .1);
+  border-radius: 42% 58% 58% 42% / 48% 42% 58% 52%;
+  pointer-events: none;
+}
+.shape-one { top: -125px; right: 6%; transform: rotate(25deg); }
+.shape-two { bottom: -155px; left: 4%; transform: rotate(-32deg); }
+
+.invite-card {
+  position: relative;
+  width: min(100%, 660px);
+  padding: clamp(42px, 7vw, 72px) clamp(26px, 7vw, 76px);
+  overflow: hidden;
+  text-align: center;
+  background: rgba(255, 249, 239, .92);
+  border: 1px solid rgba(58, 48, 41, .12);
+  border-radius: 32px;
+  box-shadow: 12px 14px 0 rgba(58, 48, 41, .14);
+}
+
+.invite-card::before, .invite-card::after {
+  position: absolute;
+  content: "✦";
+  color: var(--orange);
+  font-size: 30px;
+}
+.invite-card::before { top: 24px; left: 32px; transform: rotate(-16deg); }
+.invite-card::after { right: 32px; bottom: 22px; color: var(--green); transform: rotate(20deg); }
+
+.eyebrow, .restaurant-label {
+  margin: 0 0 12px;
+  color: var(--green);
+  font-size: .73rem;
+  font-weight: 700;
+  letter-spacing: .15em;
+}
+.food-emoji { margin: 2px 0 12px; font-size: clamp(60px, 10vw, 84px); filter: drop-shadow(0 7px 0 rgba(232, 96, 47, .15)); }
+h1, h2, h3 { font-family: "Playfair Display", serif; }
+h1 { margin: 0; font-size: clamp(3rem, 8vw, 5.2rem); line-height: .96; letter-spacing: -.06em; }
+h1 em { color: var(--orange); }
+h2 { margin: 0; font-size: clamp(2.35rem, 6vw, 3.75rem); line-height: 1.03; letter-spacing: -.045em; }
+.subtitle { max-width: 430px; margin: 24px auto 0; font-size: 1.05rem; line-height: 1.55; }
+
+.actions { display: flex; align-items: center; justify-content: center; gap: 14px; min-height: 62px; margin-top: 34px; }
+.button { border: 0; border-radius: 999px; padding: 15px 23px; font-weight: 700; transition: transform .18s ease, background .18s ease, box-shadow .18s ease; }
+.button:hover { transform: translateY(-3px); }
+.button-yes { color: white; background: var(--orange); box-shadow: 0 5px 0 var(--orange-dark); }
+.button-yes:hover { background: #ef6f3c; box-shadow: 0 8px 0 var(--orange-dark); }
+.button-no { color: var(--ink); background: #f2eadb; }
+
+.hidden { display: none; }
+.tiny-emoji { margin-bottom: 8px; font-size: 56px; }
+.confirmation .eyebrow { margin-top: 0; }
+.confirmation-actions { margin-top: 26px; }
+.text-button { padding: 10px 15px; color: #806e60; background: none; border: 0; text-decoration: underline; text-underline-offset: 4px; }
+.text-button:hover { color: var(--ink); }
+
+.happy-emoji { margin: 0 0 8px; font-size: 78px; animation: bounce .75s ease-in-out infinite alternate; }
+.celebration .subtitle { margin-top: 17px; }
+.restaurant-card { display: grid; grid-template-columns: 1fr 1.08fr; margin-top: 32px; overflow: hidden; text-align: left; border: 1px solid rgba(58, 48, 41, .12); border-radius: 20px; background: #fffdf7; box-shadow: 0 8px 22px rgba(58, 48, 41, .1); }
+.restaurant-card img { width: 100%; height: 100%; min-height: 235px; object-fit: cover; background: #eac9a1; }
+.restaurant-copy { padding: 24px 20px; }
+.restaurant-label { margin-bottom: 7px; font-size: .62rem; }
+.restaurant-copy h3 { margin: 0; font-size: 1.62rem; letter-spacing: -.03em; }
+.restaurant-copy > p:not(.restaurant-label) { margin: 9px 0 19px; line-height: 1.45; }
+.restaurant-links { display: flex; flex-direction: column; gap: 8px; }
+.restaurant-links a { color: var(--green); font-weight: 700; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+.restaurant-links a:hover { color: var(--orange); }
+
+@keyframes bounce { to { transform: translateY(-7px) rotate(4deg); } }
+
+@media (max-width: 520px) {
+  .page-shell { padding: 16px; }
+  .invite-card { border-radius: 24px; box-shadow: 7px 8px 0 rgba(58, 48, 41, .14); }
+  .restaurant-card { grid-template-columns: 1fr; }
+  .restaurant-card img { height: 175px; min-height: 0; }
+  .actions { gap: 8px; }
+  .button { padding-inline: 17px; }
+}
