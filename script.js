@@ -25,10 +25,6 @@ function moveNoButton() {
   noButton.style.left = `${x}px`;
   noButton.style.top = `${y}px`;
   dodgeCount += 1;
-
-  if (dodgeCount === maxDodges) {
-    noButton.textContent = 'Ora cliccami';
-  }
 }
 
 function showConfirmation() {
